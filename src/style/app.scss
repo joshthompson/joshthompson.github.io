@@ -1,0 +1,54 @@
+@import '@/style/theme.scss';
+
+html {
+    box-sizing: border-box;
+    font-size: 24px;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    text-align: center;
+}
+
+#app {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.main {
+    flex-grow: 1;
+    background: #262933;
+    color: #FFFFFF;
+}
+
+.container {
+    width: 1200px;
+    max-width: calc(100% - 4rem);
+    margin: 0 auto;
+}
+
+a {
+    color: $main-colour;
+    cursor: pointer;
+    &:hover {
+        text-decoration: underline;
+    }
+}	
+
+footer {
+    background: #363944;
+    color: #FFFFFF;
+
+    menu {
+        margin: 0;
+        padding: 1rem;
+    }
+}
