@@ -114,6 +114,7 @@
 
 	.project img {
 		width: 50%;
+		max-width: 100%;
 		border-radius: 0.5rem;
 		box-shadow: 0 0.2rem 0.2rem rgba(0, 0, 0, 0.25);
 	}
