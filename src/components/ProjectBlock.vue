@@ -15,51 +15,106 @@
 			<div class="image">
 				<img :src="`./${project.image}`" />
 			</div>
-			<div class="description" v-html="project.description"></div>
+			<div class="body">
+				<div class="description" v-html="project.description"></div>
+				<div class="technologies" v-if="project.technologies">
+					<span>Technologies used:</span>
+					<div>
+						<div v-for="(tech, i) in project.technologies" :key="i" class="tag">
+							{{ tech }}
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
+		<hr />
 	</div>
 </template>
 
 <style lang="scss" scoped>
-	img {
-		width: 50%;
-		border-radius: 0.5rem;
-		box-shadow: 0 0.2rem 0.2rem rgba(0, 0, 0, 0.25);
-	}
+	@import '@/style/theme.scss';
+	@import '@/style/responsive.scss';
 
 	.content {
 		display: flex;
 		width: 100%;
 		align-items: top;
+
 		.image {
 			padding-right: 1rem;
+
 			img {
-				height: 540px;
-				max-height: 60vh;
-				width: auto;
+				width: 500px;
+				max-width: 30vw;
+
+				@include small {
+					max-width: 100%;
+					height: auto;
+					max-height: none;
+				}
+			}
+
+			@include small {
+				padding: 0;
 			}
 		}
-		.description {
+
+		.body {
 			padding-left: 1rem;
-			div {
-				margin: 1rem 0;
+
+			@include small {
+				padding: 1rem 0 0;
 			}
+		}
+		
+		@include small {
+			flex-direction: column;
+		}
+	}
+
+	.technologies {
+		text-align: left;
+
+		@include small {
+			text-align: center;
+		}
+
+		span {
+			line-height: 3rem;
+			margin-right: 0.5rem;
+		}
+
+		.tag {
+			display: inline-block;
+			text-align: center;
+			background: $main-colour;
+			color: $dark-colour;
+			padding: 0.25rem 0.5rem;
+			border-radius: 0.25rem;
+			margin: 0.5rem 0.5rem 0 0;
 		}
 	}
 </style>
 
 <style lang="scss">
-	@import '@/style/theme.scss';
+	@import '@/style/responsive.scss';
 
 	.description div {
-		margin-top: 2rem;
+		margin-bottom: 1rem;
 		text-align: left;
+
+		@include small {
+			text-align: center;
+		}
+
 		&:nth-child(1) {
 			margin-top: 0;
 		}
-		em {
-			color: $main-colour;
-			font-style: normal;
-		}
+	}
+
+	.project img {
+		width: 50%;
+		border-radius: 0.5rem;
+		box-shadow: 0 0.2rem 0.2rem rgba(0, 0, 0, 0.25);
 	}
 </style>

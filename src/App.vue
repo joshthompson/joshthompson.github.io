@@ -10,11 +10,6 @@
 		<div class="main">
 			<router-view />
 		</div>
-		<footer>
-			<menu>
-				Josh Thompson
-			</menu>
-		</footer>
 	</div>
 </template>
 
