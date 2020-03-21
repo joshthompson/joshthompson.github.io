@@ -4,6 +4,7 @@ const projects: Project[] = [
 	{
 		id: 'brinstarbookingengine',
 		name: 'Car Rental Booking Engine',
+		when: '2018 - 2020',
 		image: require('@/assets/projects/brinstar.png'),
 		description: `
 			<div>
@@ -21,6 +22,7 @@ const projects: Project[] = [
 	{
 		id: 'ooobot',
 		name: 'Out Of Office Bot',
+		when: '2019',
 		image: require('@/assets/projects/ooobot.png'),
 		description: `
 			<div>
@@ -41,6 +43,7 @@ const projects: Project[] = [
 	{
 		id: 'pbka',
 		name: 'Partner Booking Kit Admin',
+		when: '2017 - 2018',
 		image: require('@/assets/projects/pbka.png'),
 		description: `
 			<div>
@@ -60,6 +63,7 @@ const projects: Project[] = [
 	{
 		id: 'fgo',
 		name: 'Fareoffice GO!',
+		when: '2019',
 		image: require('@/assets/projects/fgo.png'),
 		description: `
 			<div>
@@ -77,6 +81,7 @@ const projects: Project[] = [
 	{
 		id: 'cavsoc',
 		name: 'CAVSOC',
+		when: '2018',
 		image: require('@/assets/projects/cavsoc.png'),
 		description: `
 			<div>
@@ -94,6 +99,7 @@ const projects: Project[] = [
 	{
 		id: 'taxicode',
 		name: 'Taxicode',
+		when: '2012 - 2016',
 		image: require('@/assets/projects/taxicode.png'),
 		description: `
 			<div>

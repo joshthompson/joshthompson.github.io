@@ -11,6 +11,7 @@
 <template>
 	<div class="project">
 		<h2>{{ project.name }}</h2>
+		<div class="when">{{ project.when }}</div>
 		<div class="content container">
 			<div class="image">
 				<img :src="`./${project.image}`" />
@@ -34,6 +35,16 @@
 <style lang="scss" scoped>
 	@import '@/style/theme.scss';
 	@import '@/style/responsive.scss';
+
+	h2 {
+		margin-bottom: 0.5rem;
+	}
+
+	.when {
+		color: rgba(255, 255, 255, 0.5);
+		font-size: 1.25rem;
+		margin-bottom: 2rem;
+	}
 
 	.content {
 		display: flex;
