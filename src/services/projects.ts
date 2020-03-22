@@ -112,10 +112,10 @@ const projects: Project[] = [
 				CAVSOC is a video production company ran by my friend, Joe Madden. They specialise in branded content, music videos, fashion editorials and live events.
 			</div>
 			<div>
-				He has a knowledge of HTML and CSS, so he asked if I could help design a simple site that would be easy for him to add content to about his projects.
+				He has a basic grasp of HTML and CSS and wanted a site that he could easily update himself. It also needed some content-based features built with Javascript so I created a simple JSON data structure he could edit which would then be used to create the more dynamic elements of the site.
 			</div>
 			<div>
-				The focus of my work was to create a simple and striking design that conveyed the brand's image.
+				A lot of the focus of the work was to create a simple and striking design that gave room for the brand's portfolio images and videos to take centre stage.
 			</div>
 		`,
 		technologies: ['HTML', 'CSS', 'Javascript']
