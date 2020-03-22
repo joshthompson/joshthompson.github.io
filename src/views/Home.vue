@@ -36,7 +36,7 @@
 			/>
 		</div>
 
-		<h2 id="cv">Interesting in hiring me?</h2>
+		<h2 id="cv">Interested in hiring me?</h2>
 
 		<p>Yes, I would be too. Here is my CV which includes my contact details. I look forward to hearing from you.</p>
 
