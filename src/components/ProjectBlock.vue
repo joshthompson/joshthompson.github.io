@@ -16,6 +16,9 @@
 	<div class="project">
 		<h2>{{ project.name }}</h2>
 		<div class="when">{{ project.when }}</div>
+		<div class="website" v-if="project.website">
+			<a class="link" :href="project.website" target="_blank">{{ project.website }}</a>
+		</div>
 		<div class="content container">
 			<div class="image">
 				<div class="main">
@@ -59,13 +62,22 @@
 	.when {
 		color: rgba(255, 255, 255, 0.5);
 		font-size: 1.25rem;
-		margin-bottom: 2rem;
+		margin-bottom: 0.5rem;
+	}
+
+	.company {
+		margin-bottom: 0.5rem;
+	}
+
+	.website {
+		margin-bottom: 0.5rem;
 	}
 
 	.content {
 		display: flex;
 		width: 100%;
 		align-items: top;
+		margin-top: 1.5rem;
 
 		.image {
 			padding-right: 1rem;

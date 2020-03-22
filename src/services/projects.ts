@@ -3,7 +3,8 @@ import { Project } from '@/types'
 const projects: Project[] = [
 	{
 		id: 'brinstarbookingengine',
-		name: 'Car Rental Booking Engine',
+		name: 'Car Hire Booking Engine',
+		company: 'Fareoffice',
 		when: '2018 - 2020',
 		images: [
 			require('@/assets/projects/brinstar1.png'),
@@ -27,6 +28,7 @@ const projects: Project[] = [
 	{
 		id: 'ooobot',
 		name: 'Out Of Office Bot',
+		company: 'Fareoffice',
 		when: '2019',
 		images: [ require('@/assets/projects/ooobot1.png') ],
 		currentImage: 0,
@@ -49,6 +51,7 @@ const projects: Project[] = [
 	{
 		id: 'pbka',
 		name: 'Partner Booking Kit Admin',
+		company: 'Fareoffice',
 		when: '2017 - 2018',
 		images: [
 			require('@/assets/projects/pbka1.png'),
@@ -74,6 +77,7 @@ const projects: Project[] = [
 	{
 		id: 'fgo',
 		name: 'Fareoffice GO!',
+		company: 'Fareoffice',
 		when: '2019',
 		images: [
 			require('@/assets/projects/fgo1.png'),
@@ -96,6 +100,7 @@ const projects: Project[] = [
 	{
 		id: 'cavsoc',
 		name: 'CAVSOC',
+		website: 'https://www.cavsoc.com/',
 		when: '2018',
 		images: [ require('@/assets/projects/cavsoc.png') ],
 		currentImage: 0,
@@ -115,6 +120,8 @@ const projects: Project[] = [
 	{
 		id: 'taxicode',
 		name: 'Taxicode',
+		company: 'Web3r',
+		website: 'https://www.taxicode.com',
 		when: '2012 - 2016',
 		images: [
 			require('@/assets/projects/taxicode.png'),
@@ -127,6 +134,9 @@ const projects: Project[] = [
 				Taxicode is web platform I developed whilst working at Web3r. Taxicode itself is a taxi booking platform that connects customers with 100s of taxi companies based all over the UK. The product itself had many areas so I'll try and briefly describe a few of them.
 			</div>
 			<div>
+				APIs for taxi price comparison, making bookings and taking payments. These APIs were used to run many of our own apps and sites as well as several third party applications.
+			</div>
+			<div>
 				A dashboard that allowed admins and taxi partners to setup their pricing, vehicles, promotions and the content of their own person sites. It allows partners to view and manage new taxi bookings and has a variety of tools to monitor an individual partners performace as well as the entire system's performance.
 			</div>
 			<div>
@@ -134,9 +144,6 @@ const projects: Project[] = [
 			</div>
 			<div>
 				An accounting system that worked out how much money each partner was to be paid out based off monthly membership fees, penalties for not complete journeys and revenue from completed journeys. This would then feed the information once a week into accounting software via an API.
-			</div>
-			<div>
-				A taxi price comparison and booking API that powered many of our own sites, apps and some thirds party applications.
 			</div>
 			<div>
 				I worked with Taxicode for 5 years and was lead developer on the project.

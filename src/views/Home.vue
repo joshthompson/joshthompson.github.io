@@ -42,7 +42,13 @@
 
 		<a href="/cv.pdf" class="link" target="_blank">Download CV</a>
 
-		<p>Oh, and find me on these sites too...</p>
+		<div class="cv">
+			<a href="/cv.pdf" class="link" target="_blank">
+				<img src="@/assets/cv.png" />
+			</a>
+		</div>
+
+		<h2>Oh, and find me on these sites too...</h2>
 
 		<div class="social">
 			<a href="https://www.linkedin.com/in/josh-thompson/" target="_blank"><img src="@/assets/linkedin.png" /></a>
@@ -125,5 +131,12 @@
 
 	.projects {
 		margin-top: 3rem;
+	}
+
+	.cv {
+		margin-top: 1rem;
+		img {
+			width: 350px;
+		}
 	}
 </style>
