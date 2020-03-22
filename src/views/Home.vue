@@ -137,6 +137,7 @@
 		margin-top: 1rem;
 		img {
 			width: 350px;
+			max-width: 100%;
 		}
 	}
 </style>
