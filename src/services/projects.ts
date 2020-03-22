@@ -5,7 +5,12 @@ const projects: Project[] = [
 		id: 'brinstarbookingengine',
 		name: 'Car Rental Booking Engine',
 		when: '2018 - 2020',
-		image: require('@/assets/projects/brinstar.png'),
+		images: [
+			require('@/assets/projects/brinstar1.png'),
+			require('@/assets/projects/brinstar2.png'),
+			require('@/assets/projects/brinstar3.png')
+		],
+		currentImage: 0,
 		description: `
 			<div>
 				I created a rental car booking engine / embeddable widget. The aim was to create an updated version of an existing product that connected to a new APIs our parent company had developed. This was to streamline the booking process and provide a more modern web experience. I worked as lead frontend in a team of six.
@@ -23,7 +28,8 @@ const projects: Project[] = [
 		id: 'ooobot',
 		name: 'Out Of Office Bot',
 		when: '2019',
-		image: require('@/assets/projects/ooobot.png'),
+		images: [ require('@/assets/projects/ooobot1.png') ],
+		currentImage: 0,
 		description: `
 			<div>
 				OOO Bot (Out Of Office Bot) was developed to solve the problem of inbox clutter due to myself and colleagues having to let people know whereabouts we'll be every day (if OOO). I developed a Slack bot that made it easy for everyone to quickly add their OOO statuses. They displayed firstly to the persons team, they also appeared in the company's OOO Outlook Calendar and most importantly in a daily announcement to the company's general channel, like here:
@@ -44,7 +50,12 @@ const projects: Project[] = [
 		id: 'pbka',
 		name: 'Partner Booking Kit Admin',
 		when: '2017 - 2018',
-		image: require('@/assets/projects/pbka.png'),
+		images: [
+			require('@/assets/projects/pbka1.png'),
+			require('@/assets/projects/pbka2.png'),
+			require('@/assets/projects/pbka3.png')
+		],
+		currentImage: 0,
 		description: `
 			<div>
 				PBK Admin (Partner Booking Kit Admin) was a tool used by sales staff to quickly set up partner solutions. Put simply, it was a CMS with tools specifically built for car rental partners.
@@ -64,7 +75,11 @@ const projects: Project[] = [
 		id: 'fgo',
 		name: 'Fareoffice GO!',
 		when: '2019',
-		image: require('@/assets/projects/fgo.png'),
+		images: [
+			require('@/assets/projects/fgo1.png'),
+			require('@/assets/projects/fgo2.png')
+		],
+		currentImage: 0,
 		description: `
 			<div>
 				As the name may suggest, Fareoffice GO! was a Pokemon Go like team building game I built for an event that was ran whilst working at Fareoffice.
@@ -82,7 +97,8 @@ const projects: Project[] = [
 		id: 'cavsoc',
 		name: 'CAVSOC',
 		when: '2018',
-		image: require('@/assets/projects/cavsoc.png'),
+		images: [ require('@/assets/projects/cavsoc.png') ],
+		currentImage: 0,
 		description: `
 			<div>
 				CAVSOC is a video production company ran by my friend, Joe Madden. The specialise in branded content, music videos, fashion editorials and live events.
@@ -100,7 +116,12 @@ const projects: Project[] = [
 		id: 'taxicode',
 		name: 'Taxicode',
 		when: '2012 - 2016',
-		image: require('@/assets/projects/taxicode.png'),
+		images: [
+			require('@/assets/projects/taxicode.png'),
+			require('@/assets/projects/trip.png'),
+			require('@/assets/projects/taxicode-api.png')
+		],
+		currentImage: 0,
 		description: `
 			<div>
 				Taxicode is web platform I developed whilst working at Web3r. Taxicode itself is a taxi booking platform that connects customers with 100s of taxi companies based all over the UK. The product itself had many areas so I'll try and briefly describe a few of them.

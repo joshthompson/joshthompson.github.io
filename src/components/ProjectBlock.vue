@@ -5,6 +5,10 @@
 	@Component
 	export default class ProjectBlock extends Vue {
 		@Prop({ required: true }) public project: Project
+
+		public selectImage(project: Project, i: number) {
+			project.currentImage = i
+		}
 	}
 </script>
 
@@ -14,7 +18,19 @@
 		<div class="when">{{ project.when }}</div>
 		<div class="content container">
 			<div class="image">
-				<img :src="`./${project.image}`" />
+				<div class="main">
+					<img :src="`./${project.images[project.currentImage]}`" />
+				</div>
+				<div v-if="project.images.length > 1" class="thumbs">
+					<img
+						v-for="(image, i) in project.images"
+						:key="i"
+						:src="image"
+						:class="{ selected: i === project.currentImage }"
+						@click="selectImage(project, i)"
+					/>
+					<div class="description">(Click thumbnails to switch image)</div>
+				</div>
 			</div>
 			<div class="body">
 				<div class="description" v-html="project.description"></div>
@@ -54,14 +70,43 @@
 		.image {
 			padding-right: 1rem;
 
-			img {
+			.main img {
 				width: 500px;
-				max-width: 30vw;
+				max-width: 45vw;
 
 				@include small {
 					max-width: 100%;
 					height: auto;
 					max-height: none;
+				}
+			}
+
+			.thumbs {
+				img {
+					width: 100px;
+					margin: 0.5rem 0.5rem 0;
+					// border: 3px solid transparent;
+					cursor: pointer;
+					filter: saturate(0.5) brightness(0.7);
+					transition: transform ease-in-out 0.2s;
+					max-width: 25%;
+
+					&.selected {
+						// border-color: #FFFFFF;
+						transform: scale(1.1);
+					}
+
+					&.selected,
+					&:hover,
+					&:focus {
+						filter: saturate(1) brightness(1);
+					}
+				}
+
+				.description {
+					color: rgba(255, 255, 255, 0.5);
+					margin-top: 1rem;
+					font-size: 0.75rem;
 				}
 			}
 
