@@ -43,8 +43,8 @@
 		private setOffsetPhone(event: DeviceOrientationEvent) {
 			this.phone = true
 			if (this.orientation) {
-				this.offset.x = minmax(this.offset.x + this.orientation.alpha - event.alpha, this.movement.x)
-				this.offset.y = minmax(this.offset.y + this.orientation.beta - event.beta, this.movement.y)
+				this.offset.x = minmax(this.offset.x + 0.5 * (this.orientation.alpha - event.alpha), this.movement.x)
+				this.offset.y = minmax(this.offset.y - 1 * (this.orientation.beta - event.beta), this.movement.y)
 			}
 			this.orientation = event
 		}
