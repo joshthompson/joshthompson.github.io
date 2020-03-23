@@ -19,12 +19,21 @@
 		public size: number = 300
 		private phone: boolean = false
 		private orientation: DeviceOrientationEvent = null
+		private canUseMotion: boolean = false
+		private motionApproved: boolean = false
 
 		private accelerometer: any
 
 		public created() {
+			this.canUseMotion = typeof (DeviceOrientationEvent as any).requestPermission === 'function'
 			window.addEventListener('mousemove', this.setOffset)
 			window.addEventListener('deviceorientation', this.setOffsetPhone)
+			window.addEventListener('resize', this.resize)
+			this.resize()
+		}
+
+		private resize() {
+			this.size = Math.min(300, window.innerWidth - 2 * 20)
 		}
 
 		private setOffset(event: MouseEvent) {
@@ -77,17 +86,27 @@
 		}
 
 		public async start() {
-			if (typeof (DeviceOrientationEvent as any).requestPermission === 'function') {
-				(DeviceOrientationEvent as any).requestPermission().catch(() => { /* Failure is okay */ })
+			if (this.canUseMotion && !this.motionApproved) {
+				try {
+					const permissionState = await (DeviceOrientationEvent as any).requestPermission()
+					if (permissionState === 'granted') {
+						this.motionApproved = true
+					}
+				} catch (err) {
+					this.motionApproved = false
+				}
 			}
 		}
 	}
 </script>
 
 <template>
-	<div class="image-3d" :style="containerStyle" @click="start">
-		<img class="foreground" :style="foregroundStyle" src="@/assets/me-fg@2x.png" srcset="@/assets/me-fg.png 300w, @/assets/me-fg.png 600w" />
-		<img class="background" :style="backgroundStyle" src="@/assets/me-bg.jpg" />
+	<div>
+		<div class="image-3d" :style="containerStyle" @click="start">
+			<img class="foreground" :style="foregroundStyle" src="@/assets/me-fg@2x.png" srcset="@/assets/me-fg.png 300w, @/assets/me-fg.png 600w" />
+			<img class="background" :style="backgroundStyle" src="@/assets/me-bg.jpg" />
+		</div>
+		<div v-if="canUseMotion && !motionApproved" class="tip" the face to make it 3D)</div>
 	</div>
 </template>
 
@@ -109,5 +128,11 @@
 			margin: -10%;
 			z-index: 1;
 		}
+	}
+
+	.tip {
+		color: rgba(255, 255, 255, 0.5);
+		margin-top: 1rem;
+		font-size: 0.75rem;
 	}
 </style>
