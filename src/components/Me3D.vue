@@ -15,7 +15,7 @@
 	export default class Me3D extends Vue {
 
 		private offset: Vector = { x: 0, y: 0 }
-		private movement: Vector = { x: 10, y: 10 }
+		private movement: Vector = { x: 10, y: 8 }
 		public size: number = 300
 		private phone: boolean = false
 		private orientation: DeviceOrientationEvent = null
@@ -57,8 +57,8 @@
 
 		public get backgroundStyle() {
 			return {
-				left: `${-this.offset.x}px`,
-				top: `${-this.offset.y}px`
+				left: `${-this.offset.x / 2}px`,
+				top: `${-this.offset.y / 2}px`
 			}
 		}
 
@@ -68,14 +68,19 @@
 				height: `${this.size}px`
 			}
 		}
+
+		public async start() {
+			if (typeof (DeviceOrientationEvent as any).requestPermission === 'function') {
+				(DeviceOrientationEvent as any).requestPermission().catch(() => { /* Failure is okay */ })
+			}
+		}
 	}
 </script>
 
 <template>
-	<div class="image-3d" :style="containerStyle">
-		<!-- <pre>{{ debug }}</pre> -->
-		<img class="foreground" :style="foregroundStyle" src="@/assets/me-fg.png" />
-		<img class="background" :style="backgroundStyle" src="@/assets/me-bg.png" />
+	<div class="image-3d" :style="containerStyle" @click="start">
+		<img class="foreground" :style="foregroundStyle" src="@/assets/me-fg@2x.png" srcset="@/assets/me-fg.png 300w, @/assets/me-fg.png 600w" />
+		<img class="background" :style="backgroundStyle" src="@/assets/me-bg.jpg" />
 	</div>
 </template>
 
