@@ -43,8 +43,15 @@
 		private setOffsetPhone(event: DeviceOrientationEvent) {
 			this.phone = true
 			if (this.orientation) {
-				this.offset.x = minmax(this.offset.x + 0.5 * (this.orientation.alpha - event.alpha), this.movement.x)
-				this.offset.y = minmax(this.offset.y - 1 * (this.orientation.beta - event.beta), this.movement.y)
+				// Get change
+				let a = this.orientation.alpha - event.alpha
+				let b = this.orientation.beta - event.beta
+				// Correct for when angle resets
+				a = a > 300 ? (a - 360) : (a < -300 ? 360 + a : a)
+				b = b > 300 ? (b - 360) : (b < -300 ? 360 + b : b)
+				// Convert to offset
+				this.offset.x = minmax(this.offset.x - 2 * b, this.movement.x)
+				this.offset.y = minmax(this.offset.y - 0.5 * a, this.movement.y)
 			}
 			this.orientation = event
 		}
