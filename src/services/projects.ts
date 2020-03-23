@@ -7,9 +7,9 @@ const projects: Project[] = [
 		company: 'Fareoffice',
 		when: '2018 - 2020',
 		images: [
-			require('@/assets/projects/brinstar1.png'),
-			require('@/assets/projects/brinstar2.png'),
-			require('@/assets/projects/brinstar3.png')
+			{ original: require('@/assets/projects/brinstar1.png') },
+			{ original: require('@/assets/projects/brinstar2.png'), thumb: require('@/assets/projects/brinstar2-thumb.png') },
+			{ original: require('@/assets/projects/brinstar3.png'), thumb: require('@/assets/projects/brinstar3-thumb.png') }
 		],
 		currentImage: 0,
 		description: `
@@ -30,7 +30,7 @@ const projects: Project[] = [
 		name: 'Out Of Office Bot',
 		company: 'Fareoffice',
 		when: '2019',
-		images: [ require('@/assets/projects/ooobot1.png') ],
+		images: [ { original: require('@/assets/projects/ooobot1.png') } ],
 		currentImage: 0,
 		description: `
 			<div>
@@ -57,9 +57,9 @@ const projects: Project[] = [
 		company: 'Fareoffice',
 		when: '2017 - 2018',
 		images: [
-			require('@/assets/projects/pbka1.png'),
-			require('@/assets/projects/pbka2.png'),
-			require('@/assets/projects/pbka3.png')
+			{ original: require('@/assets/projects/pbka1.png') },
+			{ original: require('@/assets/projects/pbka2.png'), thumb: require('@/assets/projects/pbka2-thumb.png') },
+			{ original: require('@/assets/projects/pbka3.png'), thumb: require('@/assets/projects/pbka3-thumb.png') }
 		],
 		currentImage: 0,
 		description: `
@@ -75,7 +75,7 @@ const projects: Project[] = [
 			<div>
 				Other solutions included landing pages and sites (which included their own booking widget). For these I had to design customer facing templates with built in content and style customisability to match each partner's requirements.
 			</div>`,
-		technologies: ['AngularJS', 'SCSS', 'Groovy', 'Clojure', 'Ruby']
+		technologies: ['AngularJS', 'SCSS', 'Groovy', 'Clojure', 'Ruby', 'Selenium', 'Robot Framework']
 	},
 	{
 		id: 'fgo',
@@ -83,8 +83,8 @@ const projects: Project[] = [
 		company: 'Fareoffice',
 		when: '2019',
 		images: [
-			require('@/assets/projects/fgo1.png'),
-			require('@/assets/projects/fgo2.png')
+			{ original: require('@/assets/projects/fgo1.png') },
+			{ original: require('@/assets/projects/fgo2.png'), thumb: require('@/assets/projects/fgo2-thumb.png') }
 		],
 		currentImage: 0,
 		description: `
@@ -105,7 +105,7 @@ const projects: Project[] = [
 		name: 'CAVSOC',
 		website: 'https://www.cavsoc.com/',
 		when: '2018',
-		images: [ require('@/assets/projects/cavsoc.png') ],
+		images: [ { original: require('@/assets/projects/cavsoc.png') } ],
 		currentImage: 0,
 		description: `
 			<div>
@@ -127,9 +127,9 @@ const projects: Project[] = [
 		website: 'https://www.taxicode.com',
 		when: '2012 - 2016',
 		images: [
-			require('@/assets/projects/taxicode.png'),
-			require('@/assets/projects/trip.png'),
-			require('@/assets/projects/taxicode-api.png')
+			{ original: require('@/assets/projects/taxicode.png') },
+			{ original: require('@/assets/projects/trip.png'), thumb: require('@/assets/projects/trip-thumb.png') },
+			{ original: require('@/assets/projects/taxicode-api.png'), thumb: require('@/assets/projects/taxicode-api-thumb.png') }
 		],
 		currentImage: 0,
 		description: `
@@ -152,7 +152,7 @@ const projects: Project[] = [
 				I worked with Taxicode for 5 years and was lead developer on the project.
 			</div>
 		`,
-		technologies: ['PHP', 'MySQL', 'Javascript', 'jQuery', 'LESS', 'MySQL', 'SPF (Structured Page Fragments)']
+		technologies: ['PHP', 'MySQL', 'Javascript', 'jQuery', 'LESS', 'MySQL']
 	}
 ]
 

@@ -5,10 +5,23 @@
 	@Component
 	export default class ProjectBlock extends Vue {
 		@Prop({ required: true }) public project: Project
+		public style: any = {}
 
 		public selectImage(project: Project, i: number) {
+			const img = (this.$refs.image as HTMLImageElement)
+			const h = img.offsetHeight
+			this.style = { height: img.offsetHeight + 'px' }
 			project.currentImage = i
 		}
+
+		public onLoad(event: any) {
+			// Reser the fixed height after image loaded
+			const src: string = event.path[0].src
+			if (!src.includes('loading')) { // Ignore loading image (because of lazy loading)
+				this.style = {}
+			}
+		}
+
 	}
 </script>
 
@@ -22,13 +35,18 @@
 		<div class="content container">
 			<div class="image">
 				<div class="main">
-					<img :src="`./${project.images[project.currentImage]}`" />
+					<img
+						ref="image"
+						v-lazy="`./${project.images[project.currentImage].original}`"
+						:style="style"
+						@load="onLoad"
+					/>
 				</div>
 				<div v-if="project.images.length > 1" class="thumbs">
 					<img
 						v-for="(image, i) in project.images"
 						:key="i"
-						:src="image"
+						v-lazy="image.thumb || image.original"
 						:class="{ selected: i === project.currentImage }"
 						@click="selectImage(project, i)"
 					/>
@@ -97,14 +115,12 @@
 				img {
 					width: 100px;
 					margin: 0.5rem 0.5rem 0;
-					// border: 3px solid transparent;
 					cursor: pointer;
 					filter: saturate(0.5) brightness(0.7);
 					transition: transform ease-in-out 0.2s;
 					max-width: 25%;
 
 					&.selected {
-						// border-color: #FFFFFF;
 						transform: scale(1.1);
 					}
 
@@ -185,5 +201,6 @@
 		max-width: 100%;
 		border-radius: 0.5rem;
 		box-shadow: 0 0.2rem 0.2rem rgba(0, 0, 0, 0.25);
+		background: #E5E5E5;
 	}
 </style>
