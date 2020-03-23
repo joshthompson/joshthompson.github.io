@@ -50,22 +50,22 @@
 				a = a > 300 ? (a - 360) : (a < -300 ? 360 + a : a)
 				b = b > 300 ? (b - 360) : (b < -300 ? 360 + b : b)
 				// Convert to offset
-				this.offset.x = minmax(this.offset.x - 2 * a, this.movement.x)
-				this.offset.y = minmax(this.offset.y - 2 * b, this.movement.y)
+				this.offset.x = minmax(this.offset.x - 1 * a, this.movement.x)
+				this.offset.y = minmax(this.offset.y - 1 * b, this.movement.y)
 			}
 			this.orientation = event
 		}
 
 		public get foregroundStyle() {
 			return {
-				transform: `scale(1.15) translate(${this.offset.x}px, ${this.offset.y - 10}px)`
+				transform: `scale(1.15) translate(${this.offset.x / 5}px, ${this.offset.y / 5 - 10}px)`
 			}
 		}
 
 		public get backgroundStyle() {
 			return {
-				left: `${-this.offset.x / 2}px`,
-				top: `${-this.offset.y / 2}px`
+				left: `${-this.offset.x * 2}px`,
+				top: `${-this.offset.y * 2}px`
 			}
 		}
 
