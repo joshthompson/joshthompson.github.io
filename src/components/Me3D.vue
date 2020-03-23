@@ -50,8 +50,8 @@
 				a = a > 300 ? (a - 360) : (a < -300 ? 360 + a : a)
 				b = b > 300 ? (b - 360) : (b < -300 ? 360 + b : b)
 				// Convert to offset
-				this.offset.x = minmax(this.offset.x - 2 * b, this.movement.x)
-				this.offset.y = minmax(this.offset.y - 0.5 * a, this.movement.y)
+				this.offset.x = minmax(this.offset.x - 2 * a, this.movement.x)
+				this.offset.y = minmax(this.offset.y - 2 * b, this.movement.y)
 			}
 			this.orientation = event
 		}
