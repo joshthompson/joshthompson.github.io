@@ -16,7 +16,7 @@
 	<div class="home">
 
 		<div class="photo">
-			<img src="@/assets/me.png" class="me" />
+			<img src="@/assets/me.png" srcset="@/assets/me.png 300w, @/assets/me@2x.png 600w" class="me" />
 			<img src="@/assets/arrow.svg" class="arrow" />
 		</div>
 
