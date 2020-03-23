@@ -3,9 +3,10 @@
 	import ProjectBlock from '@/components/ProjectBlock.vue'
 	import projects from '@/services/projects'
 	import { Project } from '@/types'
+	import Me3D from '@/components/Me3D.vue'
 
 	@Component({
-		components: { ProjectBlock }
+		components: { ProjectBlock, Me3D }
 	})
 	export default class Home extends Vue {
 		public projects: Project[] = projects
@@ -16,7 +17,8 @@
 	<div class="home">
 
 		<div class="photo">
-			<img src="@/assets/me.png" srcset="@/assets/me.png 300w, @/assets/me@2x.png 600w" class="me" />
+			<Me3D class="me" />
+			<!-- <img src="@/assets/me.png" srcset="@/assets/me.png 300w, @/assets/me@2x.png 600w" class="me" /> -->
 			<img src="@/assets/arrow.svg" class="arrow" />
 		</div>
 
@@ -28,7 +30,7 @@
 
 		<hr />
 
-		<div class="projects">
+		<div class="projects container">
 			<ProjectBlock
 				v-for="project in projects"
 				:key="project.id"
@@ -76,6 +78,7 @@
 			width: 30%;
 			top: 75%;
 			left: 75%;
+			z-index: 3;
 			animation: floating 2s linear infinite;
 		}
 	}
