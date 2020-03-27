@@ -22,8 +22,6 @@
 		private canUseMotion: boolean = false
 		private motionApproved: boolean = false
 
-		private accelerometer: any
-
 		public created() {
 			this.canUseMotion = typeof (DeviceOrientationEvent as any).requestPermission === 'function'
 			window.addEventListener('mousemove', this.setOffset)
@@ -37,15 +35,13 @@
 		}
 
 		private setOffset(event: MouseEvent) {
-			if (!this.phone) {
-				const multiplier: Vector = {
-					x: minmax((event.pageX / window.innerWidth) * 2 - 1, 1),
-					y: minmax((event.pageY / window.innerHeight) * 2 - 1, 1)
-				} // A number between -1 and 1 - min maxed as cursor can go beyond and still register
-				this.offset = {
-					x: multiplier.x * this.movement.x,
-					y: multiplier.y * this.movement.y
-				}
+			const multiplier: Vector = {
+				x: minmax((event.pageX / window.innerWidth) * 2 - 1, 1),
+				y: minmax((event.pageY / window.innerHeight) * 2 - 1, 1)
+			} // A number between -1 and 1 - min maxed as cursor can go beyond and still register
+			this.offset = {
+				x: multiplier.x * this.movement.x,
+				y: multiplier.y * this.movement.y
 			}
 		}
 
