@@ -102,7 +102,7 @@
 			<img class="foreground" :style="foregroundStyle" src="@/assets/me-fg@2x.png" srcset="@/assets/me-fg.png 300w, @/assets/me-fg.png 600w" />
 			<img class="background" :style="backgroundStyle" src="@/assets/me-bg.jpg" />
 		</div>
-		<div v-if="canUseMotion && !motionApproved" class="tip">(Click the face to make it 3D)</div>
+		<div v-if="canUseMotion && !motionApproved" class="tip">(Click the face to make it 3D on phones)</div>
 	</div>
 </template>
 
