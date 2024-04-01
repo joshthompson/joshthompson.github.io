@@ -11,6 +11,6 @@ export interface Project {
 	when: string
 	images: PortfolioImage[]
 	currentImage: number
-	description?: string,
+	description?: string
 	technologies?: string[]
 }

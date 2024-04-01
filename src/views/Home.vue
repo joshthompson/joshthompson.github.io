@@ -1,54 +1,32 @@
 <script lang="ts">
 	import { Component, Vue } from 'vue-property-decorator'
-	import ProjectBlock from '@/components/ProjectBlock.vue'
-	import projects from '@/services/projects'
-	import { Project } from '@/types'
-	import Me3D from '@/components/Me3D.vue'
+	import HeroHeader from '@/components/HeroHeader.vue'
+	import ProjectBlocks from '@/components/ProjectBlocks.vue'
+	import CVBlock from '@/components/CVBlock.vue'
 
 	@Component({
-		components: { ProjectBlock, Me3D }
+		components: { HeroHeader, ProjectBlocks, CVBlock }
 	})
 	export default class Home extends Vue {
-		public projects: Project[] = projects
+
+		public upClass = { visible: false }
+		public mounted() {
+			document.body.addEventListener('scroll', () => {
+				this.upClass.visible = document.body.scrollTop > 100
+			})
+		}
+		public scrollToTop() {
+			document.body.scrollTo({ top: 0, behavior: 'smooth' })
+		}
 	}
 </script>
 
 <template>
 	<div class="home">
 
-		<div class="photo">
-			<Me3D class="me" />
-			<!-- <img src="@/assets/me.png" srcset="@/assets/me.png 300w, @/assets/me@2x.png 600w" class="me" /> -->
-			<img src="@/assets/arrow.svg" class="arrow" />
-		</div>
-
-		<h1>Hej! That's <em>Josh Thompson</em> (me)</h1>
-		<div class="intro">
-			<div>I'm a Stockholm based, frontend web developer.</div>
-			<div>Unless you wanna skip to my <a href="#cv" class="link">CV</a>, lets get straight to some of my work!</div>
-		</div>
-
-		<hr />
-
-		<div class="projects container">
-			<ProjectBlock
-				v-for="project in projects"
-				:key="project.id"
-				:project="project"
-			/>
-		</div>
-
-		<h2 id="cv">Interested in hiring me?</h2>
-
-		<p>Yes, I would be too. Here is my CV which includes my contact details. I look forward to hearing from you.</p>
-
-		<a href="/cv.pdf" class="link" target="_blank">Download CV</a>
-
-		<div class="cv">
-			<a href="/cv.pdf" class="link" target="_blank">
-				<img src="@/assets/cv.png" />
-			</a>
-		</div>
+    <HeroHeader />
+    <ProjectBlocks />
+    <CVBlock />
 
 		<h2>Oh, and find me on these sites too...</h2>
 
@@ -56,12 +34,47 @@
 			<a href="https://www.linkedin.com/in/josh-thompson/" target="_blank"><img src="@/assets/linkedin.png" /></a>
 			<a href="https://www.instagram.com/joshbenthompson/" target="_blank"><img src="@/assets/instagram.png" /></a>
 		</div>
+
+		<div class="up" :class="upClass" @click="scrollToTop">
+			<img alt="Go to top" src="@/assets/chevron.svg" />
+		</div>
 	</div>
 </template>
 
 <style lang="scss" scoped>
 	@import '@/style/theme.scss';
 	@import '@/style/responsive.scss';
+
+	.up {
+		position: fixed;
+		bottom: var(--spacing-medium);
+		right: var(--spacing-medium);
+		width: 2rem;
+		height: 2rem;
+		border-radius: 50%;
+		background: var(--primary);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+		transition:
+			scale var(--duration-fast) ease-in-out,
+			opacity var(--duration-slow) ease-in-out;
+
+		&:not(.visible) {
+			opacity: 0;
+			pointer-events: none;
+		}
+
+		img {
+			width: 60%;
+			translate: 0 -2px;
+		}
+
+		&:hover {
+			scale: 1.1;
+		}
+	}
 
 	.photo {
 		position: relative;
@@ -92,11 +105,6 @@
 		}
 	}
 
-	@keyframes floating {
-		0%   { transform: rotate(360deg) translateX(10px) rotate(-360deg); }
-		100% { transform: rotate(0deg)   translateX(10px) rotate(0deg);    }
-	}
-
 	em {
 		font-style: normal;
 		color: $main-colour;
@@ -111,14 +119,6 @@
 		}
 	}
 
-	.home {
-		margin: 3rem;
-
-		@include small {
-			margin: 2rem 1rem;
-		}
-	}
-
 	.social {
 		img {
 			width: 2rem;
@@ -130,10 +130,6 @@
 			cursor: pointer;
 		}
 		margin-bottom: 2rem;
-	}
-
-	.projects {
-		margin-top: 3rem;
 	}
 
 	.cv {

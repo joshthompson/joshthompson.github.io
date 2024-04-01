@@ -15,7 +15,7 @@
 		}
 
 		public onLoad(event: any) {
-			// Reser the fixed height after image loaded
+			// Reset the fixed height after image loaded
 			const src: string = event.path[0].src
 			if (!src.includes('loading')) { // Ignore loading image (because of lazy loading)
 				this.style = {}
@@ -37,6 +37,7 @@
 				<div class="main">
 					<img
 						ref="image"
+						:alt="`Screenshot of ${project.name}`"
 						v-lazy="`./${project.images[project.currentImage].original}`"
 						:style="style"
 						@load="onLoad"
@@ -46,6 +47,7 @@
 					<img
 						v-for="(image, i) in project.images"
 						:key="i"
+						:alt="`Thumbnail for screenshot of ${project.name}`"
 						v-lazy="image.thumb || image.original"
 						:class="{ selected: i === project.currentImage }"
 						@click="selectImage(project, i)"
@@ -193,6 +195,10 @@
 
 		&:nth-child(1) {
 			margin-top: 0;
+		}
+
+		a {
+			color: inherit;
 		}
 	}
 

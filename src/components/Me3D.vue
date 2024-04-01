@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { Component, Vue } from 'vue-property-decorator'
-	import { Project } from '@/types'
 
 	interface Vector {
 		x: number
@@ -17,10 +16,10 @@
 		private offset: Vector = { x: 0, y: 0 }
 		private movement: Vector = { x: 10, y: 8 }
 		public size: number = 300
-		private phone: boolean = false
+		public phone: boolean = false
 		private orientation: DeviceOrientationEvent = null
-		private canUseMotion: boolean = false
-		private motionApproved: boolean = false
+		public canUseMotion: boolean = false
+		public motionApproved: boolean = false
 
 		public created() {
 			this.canUseMotion = typeof (DeviceOrientationEvent as any).requestPermission === 'function'
@@ -99,8 +98,20 @@
 <template>
 	<div>
 		<div class="image-3d" :style="containerStyle" @click="start">
-			<img class="foreground" :style="foregroundStyle" src="@/assets/me-fg@2x.png" srcset="@/assets/me-fg.png 300w, @/assets/me-fg.png 600w" />
-			<img class="background" :style="backgroundStyle" src="@/assets/me-bg.jpg" />
+			<img
+				class="foreground"
+				alt="Me"
+				:style="foregroundStyle"
+				src="@/assets/me-fg@2x.png"
+				srcset="@/assets/me-fg.png 300w, @/assets/me-fg.png 600w"
+			/>
+			<img
+				class="background"
+				alt="Background of photo of me"
+				aria-hidden="true"
+				:style="backgroundStyle"
+				src="@/assets/me-bg.jpg"
+			/>
 		</div>
 		<div v-if="canUseMotion && !motionApproved" class="tip">(Click the face to make it 3D on phones)</div>
 	</div>
@@ -113,11 +124,13 @@
 		position: relative;
 		overflow: hidden;
 		border-radius: 2rem;
+
 		.foreground {
 			position: relative;
 			z-index: 2;
 			width: 100%;
 		}
+
 		.background {
 			position: absolute;
 			width: 120%;

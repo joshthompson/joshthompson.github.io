@@ -20,6 +20,7 @@
 		"member-ordering": false,
 		"object-literal-sort-keys": false,
 		"object-literal-shorthand": false,
+		"object-literal-key-quotes": [true, "as-needed"],
 		"no-consecutive-blank-lines": false
 	}
 }
