@@ -16,8 +16,8 @@
 
 		public onLoad(event: any) {
 			// Reset the fixed height after image loaded
-			const src: string = event.path[0].src
-			if (!src.includes('loading')) { // Ignore loading image (because of lazy loading)
+			const src: string = event.path?.[0].src
+			if (!src?.includes('loading')) { // Ignore loading image (because of lazy loading)
 				this.style = {}
 			}
 		}

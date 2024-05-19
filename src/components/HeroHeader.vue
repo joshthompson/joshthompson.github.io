@@ -7,7 +7,7 @@
 	})
 	export default class HeroHeader extends Vue {
 		public mounted() {
-			document.querySelectorAll('a').forEach((anchor) => {
+			document.querySelectorAll('header a').forEach((anchor) => {
 				anchor.addEventListener('click', function(event) {
 					event.preventDefault()
 					document.querySelector(this.getAttribute('href')).scrollIntoView({
